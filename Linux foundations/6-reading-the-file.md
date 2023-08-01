@@ -1,6 +1,6 @@
 # Reading the file
 ## "cat" command
-* cat comes from "concatenate"
+* cat comes from "concatenate" (OR "catenate")
 * the downside of "cat" is that it prints the whole file (no matter how big)
 * the "file" command tells us the kind of file we have
 
