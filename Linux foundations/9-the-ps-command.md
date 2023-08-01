@@ -24,7 +24,7 @@
 2. 'I' - idle kernel thread
 3. 'R' - running or runable (on run queue)
 4. 'S' - interruptible sleep (waiting for an event to complete)
-5. 'T' - stopped by jon control signal
+5. 'T' - stopped by job control signal
 6. 't' - stopped by debugger during tracing
 7. 'X' - dead (should never be seen)
 8. 'Z' - defunct ("zombie") process, terminated but not killed by parent
