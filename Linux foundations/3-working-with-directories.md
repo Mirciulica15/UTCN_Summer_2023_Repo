@@ -3,7 +3,7 @@
   * pwd : print working directory
   * cd : change directory
   * ls : list directory contents
-  * $HOME = ~ : home directory
+  * $HOME (OR ~) : home directory
   * we can cd using relative path or absolute bath (from the ~)
 
 ## Creating directories:
