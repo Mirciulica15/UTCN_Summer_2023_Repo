@@ -72,4 +72,4 @@
 * press s -> change refresh rate (default = 3 seconds)
 * **Killing processes : press k and provide the PID of the process to kill**
 * press W -> if we want to keep the settings for longer; they will be written in the "toprc" file
-* **we can also execute the commands with the settings right away (example : top -o %MEM )
+* we can also execute the commands with the settings right away (example : top -o %MEM )
