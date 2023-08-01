@@ -19,7 +19,7 @@
 * UID : unique User Identifier
   * uid=0 root
   * uid=1-99 predefined accounts
-  * uid=100-99 system and administrative accounts
+  * uid=100-999 system and administrative accounts
   * uid=1000+ users 
 * GID : Group Identifier
   * combines several users in the same entity
@@ -57,8 +57,8 @@
 
 ## Create user
 ### There are 2 ways to create a new user:
-1. useradd -> binary file
-2. adduser -> Perl script, it uses useradd to createa a user in the backend
+1. **useradd** -> binary file
+2. **adduser** -> Perl script, it uses useradd to create a user in the backend
 #### Differences:
 * adduser is more verbose and it is interactive, it asks for password and other information
 * we prefer useradd, it's available on every Linux distribution and works the same way
@@ -73,11 +73,11 @@
 
 ## Modify existing user
 ### Changing the password
-* syntax : passwd <user> , the bash will prompt you to add a new password and retype it
-* if no <user> if specified, the command will target the current user
+* syntax : **passwd (user)** , the bash will prompt you to add a new password and retype it
+* if no user if specified, the command will target the current user
 
 ### Changing the user
-* syntax : usermod <user> <changes>
+* syntax : **usermod (user) (changes)**
 * example : usermod testuser3 -g testuser2
 * we changed the _group_ of testuser3 to testuser2
 
