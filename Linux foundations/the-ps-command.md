@@ -19,20 +19,20 @@
 ![image](https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/b8816dec-1713-424b-a6e3-b77d43988ac9)
 * we notice a new column, STAT -> refers to the status of the process
 * **STATUSES (most important to understand):**
-**1. D - uninterruptible sleep (usually IO)
+* 1. D - uninterruptible sleep (usually IO)
   2. I - idle kernel thread
   3. R - running or runable (on run queue)
   4. S - interruptible sleep (waiting for an event to complete)
   5. T - stopped by jon control signal
   6. t - stopped by debugger during tracing
   7. X - dead (should never be seen)
-  8. Z - defunct ("zombie") process, terminated but not killed by parent**
+  8. Z - defunct ("zombie") process, terminated but not killed by parent
 * **Some statuses may have a second letter:**
-**1. < - high-priority (not nice to other users)
+* 1. < - high-priority (not nice to other users)
   2. N - low-priority (nice to other users)
   3. s - session leader
   4. l - multi-threaded
-  5. + - is in the foreground process group**
+  5. + - is in the foreground process group
 * to list all processes : ps -A
 * ps -ef : used when someone wants to determine the PID of the process
 * ps aux : additional info (resource usage etc.)
