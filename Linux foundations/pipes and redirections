@@ -1,0 +1,24 @@
+pipes and redirections take the output of a command and serve it as an input to another command
+
+(example : cat numbers.txt | wc -l)
+- wc : counts (-l counts lines)
+
+pipes -> command1 | command2 | command3 | command4
+redirections -> command1 > command2
+
+(example : cat numbers.txt | wc -l > count.txt
+// this counts the number of lines in numbers.txt
+// and puts it in a file count.txt
+
+'>' works this way:
+if file doesn't exist -> create it and add the content to it
+else if file exists -> remove its content and replace it with the new one
+=> if we want to APPEND to a file, we must use ">>" instead of ">"
+
+we can also create loops (the syntax looks like pseudo-code)
+(example : while read line; do echo "Content of the line: ${line}"; done < numbers.txt
+explanation: - while we can read lines from the file,
+             - we print "Content of the line: " and ${line} -> the content of the line
+             - until done
+             - we take the input from the file numbers.txt
+)
