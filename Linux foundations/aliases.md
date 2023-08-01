@@ -16,19 +16,17 @@
    * by default, when we execute a script, it will be executed in its own shell
 2. Using a different ".bash_aliases" file:
    * this file should be loaded automatically when .bashrc is loaded
-   * ```
-    if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-    fi
-    ```
-  * we must check that this block belongs in the .bashrc file
-  * add alias to .bash_aliases
-  * load .bashrc ( source ./.bashrc )
+   * if [ -f ~/.bash_aliases ]; then
+   * . ~/.bash_aliases
+   * fi
+   * we must check that this block belongs in the .bashrc file
+   * add alias to .bash_aliases
+   * load .bashrc ( source ./.bashrc )
 
 ## How do we make aliases for ALL users?
 ### Here we touch the administrative part
 ### We have to add to the global configuration
 * The place where we have to add out aliases if /etc/profile.d
 * When we log into the system, the ~/.profile file is loaded
-<img width="392" alt="image" src="https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/cb157eee-bc2e-4c70-bdd6-3da8574dc4e4">
+* <img width="392" alt="image" src="https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/cb157eee-bc2e-4c70-bdd6-3da8574dc4e4">
 * *Observation: we saved it as a .sh file (shell script)*
