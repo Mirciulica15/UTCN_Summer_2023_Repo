@@ -22,3 +22,8 @@ explanation: - while we can read lines from the file,
              - until done
              - we take the input from the file numbers.txt
 )
+
+read a dubious html 3.2 web page where I learned about "less"
+- cat ("concatenate") is considered stupid by the author for reading the contents of a file
+- therefore, he suggest using "less" instead
+- tried using it, got a vim editor
