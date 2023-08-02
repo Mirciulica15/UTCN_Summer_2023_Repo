@@ -80,5 +80,15 @@
 * syntax : **usermod (user) (changes)**
 * example : usermod testuser3 -g testuser2
 * we changed the _group_ of testuser3 to testuser2
+* we sometimes need to use -**a**G (a for append)
 
-// TODO finish Working with users
+### Changing the shell
+* example : usermod testuser3 -s /bin/sh
+
+### Delete the user
+* syntax : **userdel (user)**
+* we cannot remove a user's group if there are other users attached to the group
+* **usermod testuser3 -G ""** renives secondary groups
+* removal arguments:
+1. -r : remove files
+2. -f : force removal
