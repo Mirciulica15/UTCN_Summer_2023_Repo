@@ -38,6 +38,16 @@
 * the answer is here: **-rw-r--r-- 1 root adm 48194 May 2 10:20 dmesg**
 * ![image](https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/bb622e6f-2394-4c95-9090-6510112f35de)
 
+## Change permissions - the "chmod" command
+* syntax : **chmod permissions objects**
 
+## Directories
+* as mentioned earlier, directories must have different permissions than files, because users must be able to execute them (go inside them)
+* ![image](https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/a58a51d0-515a-4dc3-9725-82be8fb67f82)
 
-
+## Owner and group
+* syntax : **chgrp group objects** -> change group
+* example : chgrp student2 student1 -> makes student2 group the _selected_ one for the student1 directory
+* we need to ue the **-R** argument (recursive) to also change it for the files inside the directory
+* syntax : **chown owner:group objects**
+* example : chown 
