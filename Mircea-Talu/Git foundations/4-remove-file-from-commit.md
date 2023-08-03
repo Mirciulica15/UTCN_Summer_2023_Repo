@@ -20,5 +20,5 @@
      * we come back to the prevoius HEAD of the repository, but all changes which we commited are unchanged
   2. --hard
      * **git reset --hard HEAD~2**
-     * we came back two more commits (~HEAD~2) and we said:
+     * we came back two more commits (HEAD~2) and we said:
      * this time we want to not only move back, but also remove all the changes we have done
