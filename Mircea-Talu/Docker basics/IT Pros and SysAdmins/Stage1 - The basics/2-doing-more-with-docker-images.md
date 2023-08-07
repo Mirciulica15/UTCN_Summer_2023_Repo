@@ -30,7 +30,26 @@
 * Docker realized that we have built some of these layers in our earlier image builds and since nothing changed, it could simply use a cached version of the layer
 * rather than pulling down code a second time and running those steps
 * this is **very useful** to IT teams when patching systems, updating or upgrading to the latest version of the code, or making configuration changes to the app
+* each layer is **immutable**
+* as successive layers are added, the new layers keep track of the changes from the level below
+* this design principle is important for both **security** and **data management**
+* _NOTE: applications that create and store data (databases, for example) can store their data in a special kind of Docker object called a **volume**
+* this way, data can **persist** and be **shared** with other containers
 
 ## Image inspection
+* **docker image inspect alpine** inspects the alpine image
+* there is a lot of information in there (in **JSON** format):
+  1. the layers the image is composed of
+  2. the driver used to store the layers
+  3. the architecture / OS it has been created for
+  4. metadate of the image
+  5. others
+* we can use **filters** to inspect just particular details about he image
+* **docker image inspect --format "{{ json .RootFS.Layers }}" alpine**
+* this will return a series of hashes which corresponds to the number of layers
+* ![image](https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/596dcbe3-2fb7-40d9-ae22-f3abfef4627c)
 
-
+## Terminology
+* **Layers** - each layer represents an instruction in the image's Docker; each layer except the last one is read-only
+* **Dockerfile** - file which outlines the necessary steps for building the Docker image
+* **Volumes** - a special Docker container which allows data to ersist and be shared respectively from the container itself; a way to abstract and manage your persistent data separately from the application itself
