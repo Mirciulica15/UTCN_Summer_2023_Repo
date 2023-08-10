@@ -62,8 +62,8 @@
 
 # CMD
 * The **CMD** instruction has 3 forms:
-  + CMD ["executable","param1","param2"] (_exec_ form, this is the preferred form)
-  + CMD ["param1","param2"] (as default parameters to ENTRYPOINT)
+  + CMD [\"executable","param1","param2"\] (_exec_ form, this is the preferred form)
+  + CMD [\"param1","param2"\] (as default parameters to ENTRYPOINT)
   + CMD command param1 param2 (_shell_ form)
 * **The main purpose of a CMD command is to provide defaults for an executing container**
 * Do not confuse **RUN** with **CMD** ; **RUN** actually runs a command and commits the result ; **CMD** does not execute anything at build time, but specifies the intended command for the image
@@ -106,8 +106,8 @@ LABEL version="1.0"
 <br>
 
 # ADD
-* **ADD [--chown=<user>:<group>] [--chmod=<perms>] [--checksum=<checksum>] <src>... <dest>**
-* **ADD [--chown=<user>:<group>] [--chmod=<perms>] ["<src>",... "<dest>"]**
+* **ADD [--chown=<user>:<group>\] [--chmod=<perms>\] [--checksum=<checksum>\] <src>... <dest>**
+* **ADD [--chown=<user>:<group>\] [--chmod=<perms>\] ["<src>",... "<dest>"\]**
 * --chown and --chmod only work on Linux containers
 
 ### Adding a git repo
@@ -118,8 +118,8 @@ LABEL version="1.0"
 <br>
 
 # COPY
-* **COPY [\--chown=<user>:<group>\] [\--chmod=<perms>\] <src>... <dest>**
-* **COPY [\--chown=<user>:<group>\] [\--chmod=<perms>\] [\"<src>",... "<dest>"\]**
+* **COPY [--chown=<user>:<group>\] [--chmod=<perms>\] <src>... <dest>**
+* **COPY [--chown=<user>:<group>\] [--chmod=<perms>\] ["<src>",... "<dest>"\]**
 * The **COPY** instruction copies new files or directory from **<src>** and add them to the filesystem of the container at the path **<dest>**
 
 <br>
@@ -149,15 +149,15 @@ LABEL version="1.0"
 <br>
 
 # VOLUME
-* Syntax : **VOLUME ["/data"]**
+* Syntax : **VOLUME ["data"\]**
 * The **VOLUME** instruction creates a mount point with the specified name and marks it as holding externally mounted volumes from native host or other containers
 
 <br>
 
 # USER
-* Syntax : USER <user>[:<group>]
+* Syntax : USER <user>[:<group>\]
 * OR
-* Snytax : USER <UID>[:<GID>]
+* Snytax : USER <UID>[:<GID>\]
 * The **USER** instruction sets the user name (or UID) and optionally the user group (or GID) to use as the default user and group for the remainder of the current stage
 * The specified user is used for **RUN** instructions and at runtime, runs the relevant **ENTRYPOINT** and **CMD** commands
 * _NOTE_: When specifying a group for a user, the user will have **only** the specified group membership; any other configured group memberships will be ignored
@@ -172,7 +172,7 @@ LABEL version="1.0"
 <br>
 
 # ARG
-* Syntax : **ARG <name>[=<default value>]**
+* Syntax : **ARG <name>[=<default value>\]**
 * The **ARG** instruction defines a variable that users can pass at build-time to the builder with the **docker build** command using the **--build-arg <varname<=<value>** flag
 * If a user specifies a build argument that was not defined in the Dockerfile, the build outputs a warning
 * A Dockerfile may contain one or more **ARG** instructions
@@ -217,7 +217,7 @@ LABEL version="1.0"
 
 # HEALTHCHECK
 * The **HEALTHCHECK** instruction has 2 forms:
-  + **HEALTHCHECK [OPTIONS] CMD command** (check container health by running a command inside the container)
+  + **HEALTHCHECK [OPTIONS\] CMD command** (check container health by running a command inside the container)
   + **HEALTHCHECK NONE** (disable any healthcheck inherited from the base image)
 * The **HEALTHCHECK** instruction tells Docker how to test a container to check that is it still working
 * This can detect cases such as a web server that is stuck in an infinite loop and unablle to handle new connectoins, even though the server process is still running
@@ -225,7 +225,7 @@ LABEL version="1.0"
 <br>
 
 # SHELL
-* Syntax : **SHELL ["executable", "parameters"]**
+* Syntax : **SHELL ["executable", "parameters"\]**
 * The **SHELL** instruction allows the default shell used for the _shell_ form of commands to be overriden
 * The **SHELL** command is especially useful on Windows where there are 2 commonly used and quite different native shells: **cmd** and **powershell**
 
