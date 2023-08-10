@@ -42,6 +42,8 @@
 
 ![image](https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/7a5e6812-9c2a-4ef7-a2ed-588deb7071a4)
 
+### HA = High Availability
+
 <br>
 
 # Data Volumes
