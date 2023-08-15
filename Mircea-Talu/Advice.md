@@ -5,10 +5,5 @@
 
 <br>
 
-# Paradoxes
-* [List of paradoxes](https://en.wikipedia.org/wiki/List_of_paradoxes)
-
-<br>
-
 # Philosophy
 * Différence et répétition, Gilles Deleuze
