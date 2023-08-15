@@ -112,8 +112,8 @@
 
 ## Inode
 * Each file has an inode structure that is identified by an **i-number**
-* The inode contains the informatoin required to access the file
-* It doesn't contain file name
+* The inode contains the information required to access the file
+* It doesn't contain the file name
 ![image](https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/0235daf7-1195-4777-9d43-a931ce7c4bd2)
 
 <br>
@@ -126,7 +126,7 @@
 ## Virtual File System
 * It manages all the different file systems
 * It is an abstraction layer between the application program and the file system implementations
-* It describes the system's file in terms of **superblobkcs** and **inodes** (the same way as the Ext2)
+* It describes the system's file in terms of **superblocks** and **inodes** (the same way as the Ext2)
 ![image](https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/caed5d4a-96f0-4ac1-851e-911538a40e76)
 
 * Inode cache
@@ -142,36 +142,37 @@
 * Each process has a unique identifier (**Process ID**)
 
 ## Process Structure
-* Eeach process is represented by a **task_Struct** data strcutre
+* Eeach process is represented by a **task_Struct** data structure
   + It contains the specifications of each process such as:
     - State
     - Scheduling information
     - Identifier
     - etc
     - ![image](https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/355bde27-c90f-4ecd-9a21-3f5f564e8355)
-* The **task_vector** is an array of pointers to every task_Struct data strcture in the system
+* The **task_vector** is an array of pointers to every task_Struct data structure in the system
   + This means that the maximum number of processes in the system is limited by the size of the task vector
   
 ## Types of Processes
-* Running
+* **Running**
   + The process is either running or it is ready to run
-* Waiting
+* **Waiting**
   + The process is waiting for an event or for a resource
-* Stopped
+* **Stopped**
   + The process has been stopped, usually by receiving a signal
-* Zombie
+* **Zombie**
   + This is a halted process which, for some reason, still has a task_struct data structure in the task vector
 
 <br>
 
 # Device Driver
-* One of the purposes of an OS is to hide the system's hrdware from the user
+* One of the purposes of an OS is to hide the system's hardware from the user
 * Instead of putting code to manage the HW controller into every application, the code is kept in the Linux kernel
-  + It abstracts the handling of devices+ All HW devices look like regular files
+  + It abstracts the handling of devices
+  + All HW devices look like regular files
 
 ## Types of Devices
 * Character devices
-  + A character device is one that can beaccessed as a stream of bytes
+  + A character device is one that can be accessed as a stream of bytes
   + Example: Keyboard, Mouse etc
 * Block devices
   + A block device can be accessed only as multiples of a block
@@ -183,7 +184,7 @@
 * Major Number
   + The major number identifies the driver associated with the device
 * Minor Number
-  + The minor number is used only be the driver specified by the major numberl other parts of the kernel don't use it
+  + The minor number is used only by the driver specified by the major number, other parts of the kernel don't use it
   + It is common for a driver to control several devices, the minor number provides a way for the driver to differentiate among them
 ![image](https://github.com/bogdandragosvasile/UTCN_summer_2023/assets/36898665/6d6697b4-c747-4117-84f9-7facb7ff6443)
 
@@ -237,12 +238,3 @@
   + A connection-less and unreliable connection (such as **UDP**)
 * Raw Socket
   + Used for internal network protocols
-
-
-
-
-
-
-
-
-
