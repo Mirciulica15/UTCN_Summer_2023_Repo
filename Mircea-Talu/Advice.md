@@ -7,3 +7,6 @@
 
 # Philosophy
 * Différence et répétition, Gilles Deleuze
+
+# System Design (Architect)
+* System Design Interview – An insider's guide: Xu, Alex
