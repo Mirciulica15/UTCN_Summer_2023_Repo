@@ -1,5 +1,9 @@
 # The Problem of Delivering Software
 
+If somebody thinks of a good idea, how do we deliver it to users as quickly as possible?
+
+<br>
+
 ## Antipatterns (Bad practices)
 
 - _Antipattern: Deploying Software Manually_
