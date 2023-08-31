@@ -7,10 +7,8 @@ Welcome to the UTCN Summer 2023 repository for the Polytechnic Computer Science 
 1. [Introduction](#introduction)
 2. [Cloud Native Concepts](#cloud-native-concepts)
 3. [CNCF Trail Map](#cncf-trail-map)
-4. [Repository Structure](#repository-structure)
-5. [Getting Started](#getting-started)
-6. [Contributors](#contributors)
-7. [License](#license)
+4. [Getting Started](#getting-started)
+5. [Contributors](#contributors)
 
 ## Introduction
 
@@ -27,42 +25,23 @@ The CNCF trail map outlines the recommended path to cloud native adoption:
 1. **Containerization**: Packaging the application and its dependencies in a container.
 2. **CI/CD**: Continuous integration and continuous delivery ensure that code changes are automatically tested and deployed.
 3. **Orchestration & Application Definition**: Using tools like Kubernetes to manage containerized applications.
-4. ... [Further steps can be added based on the trail map]
-
-## Repository Structure
-
-- **C++ Code**: The repository primarily contains C++ code, which can be found [here](https://github.com/Mirciulica15/UTCN_Summer_2023_Repo/search?l=c%2B%2B).
-- **C Code**: There's also a portion of C code present in the repository.
 
 ## Getting Started
 
 1. **Clone the Repository**: `git clone https://github.com/Mirciulica15/UTCN_Summer_2023_Repo.git`
 2. **Navigate to the Directory**: `cd UTCN_Summer_2023_Repo`
-3. **Install Dependencies**: [Instructions for installing dependencies]
-4. **Run the Application**: [Instructions for running the application]
 
 ## Contributors
 
 - **Mirciulica15**: Repository owner and primary contributor.
-- **Bogdan Dragos**: Contributed to various parts of the repository.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-This is a draft README.md for your repository. You can further customize it based on your requirements and the specific details of your project.
-
----
-
-I've accessed the provided GitLab repository. Here's a brief overview:
+Access the provided GitLab repository at https://gitlab.com/Mirciulica15/resources-utilization .
 
 - **Repository Name**: Authentication App
 - **Owner**: Mircea Talu
 - **Description**: The repository contains an authentication app designed to be deployed in AWS EKS. It's a simple login form developed using the Flask framework, with basic password hashing. The primary goal is to deploy this application in AWS (Amazon Web Services) EKS (Elastic Kubernetes Services).
-
-Given the information and your request, I'll draft a detailed README.md for your GitLab repository:
 
 ---
 
@@ -103,23 +82,13 @@ The deployment process involves several steps:
 2. **CI/CD Pipeline**: The `.gitlab-ci.yml` file automates the process of building the Docker image and deploying it. The build stage creates an image and uploads it to Docker Hub.
 3. **Helm Deployment**: Helm is used to create templates and configurations for Kubernetes clusters. The Helm chart for this project can be found in the `chart` directory.
 
-## Contributors
-
-- **Mircea Talu**: Repository owner and primary contributor.
-
 ---
 
-This is a draft README.md for your GitLab repository. You can further customize it based on your requirements and the specific details of your project.
-
----
-
-I've accessed the provided GitLab repository. Here's a brief overview:
+Access the provided GitLab repository at https://gitlab.com/Mirciulica15/resource-utilization .
 
 - **Repository Name**: Resource Utilization
 - **Owner**: Mircea Talu
 - **Description**: The repository contains a Resource Utilization Application designed to be deployed in AWS EKS.
-
-Given the information and your request, I'll draft a detailed README.md for your GitLab repository:
 
 ---
 
@@ -159,23 +128,13 @@ The deployment process involves several steps:
 2. **CI/CD Pipeline**: The `.gitlab-ci.yml` file automates the process of building the Docker image and deploying it on AWS EKS.
 3. **Helm Deployment**: Helm is used to create templates and configurations for Kubernetes clusters. The Helm chart for this project can be found in the `chart` directory.
 
-## Contributors
-
-- **Mircea Talu**: Repository owner and primary contributor.
-
 ---
 
-This is a draft README.md for your GitLab repository. You can further customize it based on your requirements and the specific details of your project.
-
----
-
-I've accessed the provided GitLab repository. Here's a brief overview:
+Accessed the provided GitLab repository at https://gitlab.com/Mirciulica15/terraform-infrastructure .
 
 - **Repository Name**: Terraform-Infrastructure
 - **Owner**: Mircea Talu
 - **Description**: The repository is focused on infrastructure setup using Terraform.
-
-Given the information and your request, I'll draft a detailed README.md for your GitLab repository:
 
 ---
 
@@ -218,11 +177,3 @@ The deployment process involves several steps:
 1. **Terraform Initialization**: This step initializes the working directory containing Terraform configuration files.
 2. **Terraform Plan**: This step creates an execution plan, determining what actions are necessary to achieve the desired state specified in the configuration files.
 3. **Terraform Apply**: This step applies the changes required to reach the desired state.
-
-## Contributors
-
-- **Mircea Talu**: Repository owner and primary contributor.
-
----
-
-This is a draft README.md for your GitLab repository. You can further customize it based on your requirements and the specific details of your project.
