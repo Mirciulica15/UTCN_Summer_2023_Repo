@@ -1,0 +1,60 @@
+CAMS
+
+Configuration
+
+Automation
+
+Measurement
+
+Sharing
+
+//
+
+Azure functions (Lambda for AWS)
+
+- good to know SQL scripting
+
+//
+
+Container Runtime
+
+- how it works
+
+//
+
+https://home.robusta.dev/blog/k8s-node-benchmark --- resource utilization (CPU, memory), node bursting
+
+https://medium.com/@JJotah/how-to-debug-kubernetes-app-errors-like-a-pro-1-3-34d61b31358e --- nc (tnc) command
+
+https://medium.com/@JJotah/how-to-debug-kubernetes-app-errors-like-a-pro-2-3-88b32586959f --- dig (Resolve-DnsName) command
+
+https://medium.com/@JJotah/how-to-debug-kubernetes-app-errors-like-a-pro-3-3-36fcfbc81e2f --- more debugging
+
+https://medium.com/@nsivadeep/optimizing-interzone-egress-cost-by-compression-and-zone-aware-traffic-routing-f7ec3c133b44 --- gRPC and compression techniques (inter-zonal egress), reducing costs
+
+https://kubernetes.io/blog/2023/04/17/fine-grained-pod-topology-spread-features-beta/ --- pod topology spread
+
+https://ochagavia.nl/blog/crafting-container-images-without-dockerfiles/ --- container images without Dockerfile
+
+https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0 --- how to expose pods, services (ClusterIP, NodePort, LoadBalancer), ingress
+
+//
+
+iptables vs ipvs vs bpf/ebpf
+
+networking (straight from layer 7)
+
+throughput
+
+istio
+
+https://isovalent.com/resource-library/labs/ --- ebpf labs
+
+//
+
+chaos monkey
+
+//
+
+
+
