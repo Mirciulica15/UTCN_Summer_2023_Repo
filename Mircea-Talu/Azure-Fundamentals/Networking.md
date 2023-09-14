@@ -29,3 +29,23 @@ Phase 2 - Create Phase 2 key
    - You can create multiple **Phase 2 keys** over the tunnel
   
 ![image](https://github.com/Mirciulica15/UTCN_Summer_2023_Repo/assets/36898665/5ad8c744-474f-4a2e-b001-f261e414208a)
+
+<br>
+
+### BGP
+
+[WATCH THIS!!!](https://www.youtube.com/watch?v=6XW5cRa3ZKM)
+
+Border Gateway Protocol
+
+Made of lots of self-managing networks, called **autonomous systems**.
+
+AS - **Autonomous System**
+
+ASN - Autonomous System Number -> managed by IANA
+
+AS Path - **Shortest path**
+
+AS Path Prepending - Artificially making the path longer to make it less appealing
+
+![image](https://github.com/Mirciulica15/UTCN_Summer_2023_Repo/assets/36898665/f6c57dad-560f-4b48-bbe6-f6ddb6aaea6b)
