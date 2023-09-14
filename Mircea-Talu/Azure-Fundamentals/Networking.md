@@ -49,3 +49,29 @@ AS Path - **Shortest path**
 AS Path Prepending - Artificially making the path longer to make it less appealing
 
 ![image](https://github.com/Mirciulica15/UTCN_Summer_2023_Repo/assets/36898665/f6c57dad-560f-4b48-bbe6-f6ddb6aaea6b)
+
+<br>
+
+### ACL
+
+[WATCH THIS!!!](https://www.youtube.com/watch?v=0gGhuYOh-54&list=PLIFyRwBY_4bRkAk_BkWL3ea6lRvOn8AKs)
+
+Access Control Lists
+
+Used to **identify traffic**
+
+ACLs applied to **interfaces** are sometimes called **packet filters**
+
+Only 1 Packet Filter ACL can be applied:
+
+- per interface
+
+- per direction
+
+- per IP protocol
+
+Types:
+
+1. **Standard** (Matches only on source IP)
+
+2. **Extended** (Matches on source IP, destination IP, source port, destination port, protocol) => granular control
