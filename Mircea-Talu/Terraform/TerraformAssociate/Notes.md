@@ -165,7 +165,7 @@ If you use multiple ways to define a variable, terraform uses **variable definit
 ## Output variables
 
 ```hcl
-output "<variable_name>"{
+output "<variable_name>" {
   value = "<variable_value">
   <arguments>
 }
