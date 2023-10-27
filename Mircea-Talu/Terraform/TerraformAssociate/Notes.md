@@ -40,7 +40,7 @@
 
 ### HCL basics
 
-```
+```hcl
 <block> <parameters> {
   key1 = value1
   key2 = value2
@@ -95,7 +95,7 @@ filename, content --> Arguments**
 - object
 - tuple
 
-```
+```hcl
 variable "length" {
   default = 2
   type = number
@@ -150,7 +150,7 @@ variable "kitty" {
 - if we don't write default values, we will be prompted to do so when we apply
 - we can use the -var argument to provide arguments: **terraform apply -var "filename=/root/pets.txt"**
 - better, we can use the syntax: **TF_VAR_filename** and then simply do **terraform apply** (TF_VAR prefix)
-- another option is to create a **terraform.tfvars** (or terraform.tfvars.json, *.auto.tfvars, *.auto.tfvars.json) file where we can easily specifies the values (**filename = "/root/pets.txt"**)
+- another option is to create a **terraform.tfvars** (or terraform.tfvars.json, \*.auto.tfvars, \*.auto.tfvars.json) file where we can easily specifies the values (**filename = "/root/pets.txt"**)
 - if you use a different name for the tfvars, you have to pass it at apply time like this: **terraform apply -var-file variables.tfvars**
 
 If you use multiple ways to define a variable, terraform uses **variable definition precedence**!
@@ -164,7 +164,7 @@ If you use multiple ways to define a variable, terraform uses **variable definit
 
 ## Output variables
 
-```
+```hcl
 output "<variable_name>"{
   value = "<variable_value">
   <arguments>
