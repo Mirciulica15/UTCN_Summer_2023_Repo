@@ -186,7 +186,7 @@ output pet-name {
 - single state of **truth** for Terraform
 - when we run plan or apply, Terraform **refreshes** the .tfstate file with the actual state
 - **then**, it reconciles it with the desired configuration
-- resources can be created in **parallel** as long as they do not have any **dependency** (implicit or explicit) between them 
+- resources can be created in **parallel** as long as they do not have any **dependency** (implicit or explicit) between them
 - if we are 100% **confident** that the actual infrastructure has not changed outside of terraform, we can run **terraform plan/apply --refresh=false**
 - this could **save time** with large infrastructure, but could be **dangerous**
 - make state **accesible** to all team members (remote state **backends**)
@@ -278,6 +278,7 @@ terraform {
 - IAM is independent of region (Global)
 
 2 types of access methods:
+
 - access to **management console**
 - **programatic access** (access keys)
 
@@ -325,6 +326,7 @@ policy = <<EOF
 - you should hold it in a **remote state backend** (AWS S3, Terraform Cloud, etc.) -> they allow state locking + security
 
 **backend** block
+
 ```hcl
 backend "s3" {
   bucket = "bucket-name"
@@ -333,6 +335,7 @@ backend "s3" {
   (dynamodb_table = "state-locking")
 }
 ```
+
 - you must run **terraform init** again after changing backend
 
 ## terraform state \<subcommand\> \[options\] \[args\]
