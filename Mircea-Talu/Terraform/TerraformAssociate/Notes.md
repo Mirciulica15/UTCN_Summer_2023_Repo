@@ -179,3 +179,167 @@ output pet-name {
 - when running terraform apply, we can see an **Outputs:** block
 - **terraform output** shows outputs
 - they get saved in the **state file** also
+
+## Terraform state (.tfstate)
+
+- JSON file
+- single state of **truth** for Terraform
+- when we run plan or apply, Terraform **refreshes** the .tfstate file with the actual state
+- **then**, it reconciles it with the desired configuration
+- resources can be created in **parallel** as long as they do not have any **dependency** (implicit or explicit) between them 
+- if we are 100% **confident** that the actual infrastructure has not changed outside of terraform, we can run **terraform plan/apply --refresh=false**
+- this could **save time** with large infrastructure, but could be **dangerous**
+- make state **accesible** to all team members (remote state **backends**)
+
+## Terraform Commands
+
+- **terraform validate** - check configuration (does **not** check the values for the resources, just the **arguments**)
+- **terraform fmt** - format the code
+- **terraform show** - print current state of the infrastructure
+- **terraform providers** - show all providers
+- **terraform output** - print outputs
+- **terraform refresh** - reconcile state with actual infrastructure (in case it is changed outside of Terraform)
+- **terraform graph** - create a dependency graph for the resources
+- install graphviz --> **terraform graph | dot -Tsvg graph.svg**
+
+## Mutable vs Immutable Infrastructure
+
+- **configuration drift** leaves infrastructure in complex state
+- **immutable** = does not change
+- create new, then delete old
+
+## Lifecycle Rules
+
+- **lifecycle** block
+- example:
+
+```hcl
+lifecycle {
+  create_before_destroy = true
+}
+```
+
+```hcl
+lifecycle {
+  prevent_destroy = true
+}
+```
+
+```hcl
+lifecycle {
+  ignore_changes = [
+    tags
+  ]
+}
+```
+
+- be **careful** with create_before_destroy, if nothing changes, terraform might create the resource (idempotent) and then delete it (no more resource)
+
+## Data Sources
+
+- read resource attributes from resources provisioned outside of Terraform
+
+## Meta Arguments
+
+- **count**: create multiple resources
+
+```hcl
+resource "local_file" "pet" {
+  filename = var.filename[count.index]
+  count = length(var.filename)
+}
+```
+
+- **for_each**: only works with a **map** or a **set**
+- use list, or **toset()**
+- resources identified by unique **string**, not by **id** (count)
+
+## Version Constraints
+
+- specifies constraints for providers in code
+
+```hcl
+terraform {
+  required_providers {
+    local = {
+      source  = "hashicorp/local"
+      version = "1.4.0"
+    }
+  }
+}
+```
+
+- can use **!=**, **>**, **<**, **~>**, etc.
+
+## AWS & IAM
+
+- create users, put them in groups
+- assign policies
+- IAM is independent of region (Global)
+
+2 types of access methods:
+- access to **management console**
+- **programatic access** (access keys)
+
+## AWS CLI
+
+- **aws configure**: configure credential access
+- **aws \<command\> \<subcommand\> \[options and parameters\]**
+
+## Heredoc
+
+```hcl
+policy = <<EOF
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "*",
+        "Resource": "*"
+      }
+    ]
+  }
+  EOF
+```
+
+## AWS S3
+
+- 2 access methods:
+  - bucket policy
+  - access control lists (ACLs)
+
+## AWS DynamoDB
+
+- NoSQL
+- one primary key
+- great for large data
+- scalable
+
+## Remote State
+
+- **don't** store the state in a **version control system**
+- the .tfstate holds **sensitive** information
+- should not allow **concurrent** operations -> **state lock**
+- GitHub doesn't support state lock
+- you should hold it in a **remote state backend** (AWS S3, Terraform Cloud, etc.) -> they allow state locking + security
+
+**backend** block
+```hcl
+backend "s3" {
+  bucket = "bucket-name"
+  key    = "dir/terraform.tfstate"
+  region = "us-west-1"
+  (dynamodb_table = "state-locking")
+}
+```
+- you must run **terraform init** again after changing backend
+
+## terraform state \<subcommand\> \[options\] \[args\]
+
+- terraform state list -> shows resources (just the names, easy to read)
+- terraform state show RESOURCE -> show specific resource
+- terraform state mv -> change attribute (name)
+- terraform state pull -> pull state and print
+- terraform state rm ADDRESS -> remove resources from state file (when you no longer want to manage them)
+- the resources are not actually **destroyed**, they are just moved from Terraform's **management**
