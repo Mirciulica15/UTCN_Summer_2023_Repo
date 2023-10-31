@@ -425,6 +425,7 @@ module "dev-webserver" {
 - **toset()**
 
 ### Numeric Functions
+
 - **max()**
 - **min()**
 - **max(var.num...)** (... expansion)
@@ -452,7 +453,7 @@ module "dev-webserver" {
 - **keys()**: convert map to list
 - **lookup(var.ami, "ca-central-1")**
 
-## Conditional Expressions
+## Operators
 
 ### Numeric Operators
 
