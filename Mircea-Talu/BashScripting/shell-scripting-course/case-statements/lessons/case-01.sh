@@ -5,6 +5,6 @@ case "$1" in
         /usr/sbin/sshd
         ;;
     stop)
-        kill $(cat /var/run/sshd.pid)
+        kill "$(cat /var/run/sshd.pid)"
         ;;
 esac
