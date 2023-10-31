@@ -346,3 +346,132 @@ backend "s3" {
 - terraform state pull -> pull state and print
 - terraform state rm ADDRESS -> remove resources from state file (when you no longer want to manage them)
 - the resources are not actually **destroyed**, they are just moved from Terraform's **management**
+
+## Amazon EC2
+
+- Amazon Machine Image (AMI)
+- Instance types: General Purpose, Compute Optimized, Memory Optimized
+- General Purpose: T2 (nano, micro, small, medium, large, xlarge, 2xlarge), T3, M5
+- EBS (Elastic Block Storage)
+- **user_data** section: you can write a script (to install nginx for example) -> only works at **first run** (creation, not modification of resource)
+- create SSH key to connect to VM
+- **aws_key_pair**: authentication, SSH key pair
+- **aws_security_group**: configure access to resource
+
+## Remote Exec
+
+- run tasks (eg. a script) using a **provisioner "remote-exec" block**
+
+## Local Exec
+
+- run tasks locally, on the machine which runs Terraform
+- by default, provisioners are run after the resources are created
+- **destroy** time provisioner, run before destruction of resource
+- **on_failure = continue**, allows terraform apply to not fail if provisioner fails
+
+## Considerations with Provisioners
+
+- use rarely
+- they increase complexity
+- use **native** provisioners for resources (like **user_data**)
+- keep post provisioning to a minimum
+
+## Terraform Taint
+
+- if an apply operations fails on a resource, then that resource is **tainted**
+- tainted resources are **replaced** (recreated) at the next apply operation
+- we can use this interesting functionality
+- if an external change is made on a resource (the nginx version is changed on a VM), and terraform cannot know that, we can **taint** the resource for reacreation
+- **terraform taint \<resouce_name\>**
+- **terraform untaint \<resource_name\>** (untaint)
+
+## Debugging
+
+- **TF_LOG** environment variable
+- example: **export TF_LOG=TRACE**
+- we can set it to: INFO, WARNING, ERROR, DEBUG, TRACE
+- **TF_LOG_PATH** environment variable specifies the place where the logs are to be saved (optional)
+- **unset TF_LOG_PATH** (remove)
+- **TRACE** provides the most details
+
+## Terraform Import
+
+- import resources to be managed by Terraform
+- **terraform import \<resource_type\>.\<resource_name\> \<attribute\>**
+- you have to write an empty resource block, and then use terraform import to populate it
+
+## Terraform Modules
+
+- **root** module: module where the terraform commands are executed
+- **module** block
+
+```hcl
+module "dev-webserver" {
+  source = "../aws-instance"
+}
+```
+
+- in this case, aws-instance is called **child** root
+- you can use modules from registries
+- these can be validated (by HashiCorp), or not (community modules)
+- **terraform get**: to get modules, before plan and apply
+- you must rerun **terraform init** if the path to modules changed
+
+## More Terraform Function
+
+- **terraform console**: allows us to experience and test with functions and interpolations
+- **file()**
+- **length()**
+- **toset()**
+
+### Numeric Functions
+- **max()**
+- **min()**
+- **max(var.num...)** (... expansion)
+- **ceil(10.1)** -> 11
+- **floor(10.9)** -> 10
+
+### String Functions
+
+- **split(",", "ami-xyz,AMI-ABC,ami-efg")**
+- **lower()**
+- **upper()**
+- **title()**
+- **substr(var.ami, 8, 7)**: from position 8, 7 characters
+- **join(",", "var.ami")**: opposite of split()
+
+### Collection Functions
+
+- **length()**
+- **index(var.ami, "AMI-ABC")**: 1
+- **element(var.ami, 2)**: ami-efg
+- **contains(var.ami, "AMI-ABC)**: true
+
+### Map Functions
+
+- **keys()**: convert map to list
+- **lookup(var.ami, "ca-central-1")**
+
+## Conditional Expressions
+
+### Numeric Operators
+
+- +, -, *, /, ==, !=, >, <, >=, <=
+
+### Logical Operators
+
+- &&, ||, !
+
+## Conditional Expressions
+
+- condition ? true_value : false_value
+
+## Terraform Workspaces
+
+- workspaces allow you to use the same configuration to replicate infrastructure
+- **terraform workspace new \<workspace_name\>**
+- **terraform workspace list**
+- **terraform workspace select \<workspace_name\>** (move between workspaces)
+- Terraform creates a **terraform.tfstate.d** directory, instead of terraform.tfstate
+- in this directory, we can find each workspace as a directory and a **terraform.tfstate** inside for each of them
+- you must run **terraform apply** for each workspace (use **select** to move between them)
