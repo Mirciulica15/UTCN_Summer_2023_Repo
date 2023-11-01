@@ -457,6 +457,7 @@ module "dev-webserver" {
 - these can be validated (by HashiCorp), or not (community modules)
 - **terraform get**: to get modules, before plan and apply
 - you must rerun **terraform init** if the path to modules changed
+- you must **export** the outputs with **output** blocks for other modules to access them
 
 ## More Terraform Function
 
