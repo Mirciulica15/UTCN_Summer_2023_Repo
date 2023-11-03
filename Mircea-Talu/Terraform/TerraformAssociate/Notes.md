@@ -462,6 +462,7 @@ module "dev-webserver" {
 ## More Terraform Function
 
 - **terraform console**: allows us to experience and test with functions and interpolations
+- **terraform console** acquires the **LOCK**
 - **file()**
 - **length()**
 - **toset()**
