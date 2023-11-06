@@ -75,6 +75,24 @@ filename, content --> Arguments**
   - community
 
 - you can have **multiple** providers in the same configuration
+- you can create **multiple** configurations for the **same provider**
+
+```hcl
+# Example
+
+provider "google" {
+  region   = "us-central1"
+}
+
+provider "google" {
+  alias    = "europe"
+  region   = "europe-west1"
+}
+
+resource "google_computer_instance" "example" {
+  provider = google.europe
+}
+```
 
 ## Configuration Directory
 
@@ -234,6 +252,29 @@ lifecycle {
 ```
 
 - be **careful** with create_before_destroy, if nothing changes, terraform might create the resource (idempotent) and then delete it (no more resource)
+
+## "terraform_data" Resource
+
+- the replacement of **null_resource**
+
+```hcl
+resource "aws_instance" "webserver" {
+  ami                         = local.ami_id
+  instance_type               = "t3.micro"
+  associate_public_ip_address = false
+  subnet_id                   = local.subnet_id
+  lifecycle {
+    replace_triggered_by = [terraform_data.replacement.output]
+  }
+}
+
+resource "terraform_data" "replacement" {
+  input = var.revision
+}
+```
+
+- Terraform would not allow the **replace_triggered_by** to take a **variable** value
+- however, we can use **terraform_data** to get around this
 
 ## Data Sources
 
@@ -416,10 +457,12 @@ module "dev-webserver" {
 - these can be validated (by HashiCorp), or not (community modules)
 - **terraform get**: to get modules, before plan and apply
 - you must rerun **terraform init** if the path to modules changed
+- you must **export** the outputs with **output** blocks for other modules to access them
 
 ## More Terraform Function
 
 - **terraform console**: allows us to experience and test with functions and interpolations
+- **terraform console** acquires the **LOCK**
 - **file()**
 - **length()**
 - **toset()**
@@ -453,6 +496,22 @@ module "dev-webserver" {
 - **keys()**: convert map to list
 - **lookup(var.ami, "ca-central-1")**
 
+### Encofing Functions
+
+- Terraform language strings are **always** sequences of **unicode characters**
+- **base64encode("Hello World")**: takes string and encodes it in Base64
+- **base64decode("SGVsbG8gV29ybGQ=")**: decodes from Base64 to original string
+- **base64gzip()**: compresses a string with gzip and then encodes the result in Base64 encoding
+- **csvdecode()**: decodes a string containing CSV-formatted data and produces a list of maps representing that data
+- **textencodebase64("Hello World", "UTF-16LE")**: encodes the unicode characters in a given string using a specified character encoding, returning the result base64 encoded
+- **textdecodebase64("SABlAGwAbABvACAAVwBvAHIAbABkAA==", "UTF-16LE")**: decodes a string that was previously Base64-encoded, and then interprets the result as characters in a specified character encoding
+- **jsonencode({"hello"="world"})**: maps Terraform language values to JSON values in the following way:
+- ![image](https://github.com/Mirciulica15/UTCN_Summer_2023_Repo/assets/36898665/987607bd-ceeb-4788-b1b1-b399b431a0d8)
+- **jsondecode("{\"hello\": \"world\"}")**: interprets a given string as JSON, returning a representation of the result of decoding that string
+- **yamlencode()**
+- **yamldecode()**
+- **urlencode("Hello World!")** > Hello+World%21 : identifies characters in the given string that would have a special meaning when included as a query string argument in a URL and escapes them
+
 ## Operators
 
 ### Numeric Operators
@@ -476,3 +535,16 @@ module "dev-webserver" {
 - Terraform creates a **terraform.tfstate.d** directory, instead of terraform.tfstate
 - in this directory, we can find each workspace as a directory and a **terraform.tfstate** inside for each of them
 - you must run **terraform apply** for each workspace (use **select** to move between them)
+
+## Lock File (.terraform.lock.hcl)
+
+- tracks dependencies
+- Terraform automatically **creates** or **updates** this file whenever you run the **terraform init** command
+- you should include this in the VC repository
+- **terraform init -upgrade** looks for the latest version within the constraints, even if one already exists
+- uses **checksums** to check packages
+- 2 hashing schemes:
+
+  - **zh**: zip hash
+  - **h1**: hash scheme 1 (preffered)
+ 
