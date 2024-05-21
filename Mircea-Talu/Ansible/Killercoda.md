@@ -99,3 +99,31 @@ Finally, we can check if the change took place.
 ```bash
 ansible servers -i /root/hosts -m shell -a 'cat /opt/deployment/configfile.cfg'
 ```
+
+## Ansible Playbooks
+
+Allows you to create a **declarative** file (.yml) which specifies the playbook.
+
+It is not practical to run 100 hundred individual commands as your system grows.
+
+```yaml
+---
+- name: Start of Deployer playbook
+  hosts: servers
+  vars:
+  gather_facts: True
+  become: False
+  tasks:
+
+    - name: Copy deploy.tar.gz over at {{ ansible_date_time.iso8601_basic_short }}
+      copy:
+        src: /root/deploy.tar.gz
+        dest: /opt/deploy.tar.gz
+        checksum: c6cd21b75a4b300b9228498c78afc6e7a831839e
+```
+
+Run the Playbook
+
+```bash
+ansible-playbook -i /root/hosts /root/deploy.yml
+```
